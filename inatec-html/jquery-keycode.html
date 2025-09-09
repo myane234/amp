@@ -1,0 +1,73 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>keycode</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .box{
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            background-color:#ccff00;
+            left: 100px;
+            top: 100px;
+        }
+        .bulat{
+            border-radius: 50%;
+        }
+        .triangle{
+            width: 0;
+            height: 0;
+            border-left: 100px solid transparent;
+            border-right: 100px solid transparent ;
+            border-bottom: 100px solid #8a2be2;
+            background-color: transparent;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){ //ini menggunakan toptal untuk mengetahui keycode
+            $(window).keydown(function (e) {
+                const left = parseInt($(".box").css("left").replace("px",""));
+                const top = parseInt($(".box").css("top").replace("px",""));
+                const maxLeft = $(document).width();
+                const maxTop = $(document).height();
+
+                if(e.keyCode == 65 && left != 0){ //KeyCode adalah c nya gede //triangle harusss main di border, kalau boxx cuman width lenght
+                    $(".box").css("left", left - 100 + "px"); //alert("left"); hanya untuk memberi tahu ketika kita mengclick keycode
+                }
+                if(e.keyCode == 87 && top != 0){
+                    $(".box").css("top", top - 100 + "px"); //alert("top");
+                }
+                if(e.keyCode == 68 && left + 200 < maxLeft){
+                    $(".box").css("left", left + 100 + "px"); //alert("Kanan");
+                }
+                if(e.keyCode == 83 && top + 200 < maxTop){
+                    $(".box").css("top", top + 100 + "px");
+                }
+
+                if(e.keyCode == 32){
+                    if($(".box").hasClass("bulat")){
+                        $(".box").removeClass("bulat");
+                        if($(".box").hasClass("triangle")){
+                        $(".box").removeClass("triangle");
+                    }else{
+                        $(".box").addClass("triangle");
+                    }
+                    }else{
+                        $(".box").addClass("bulat")
+                    }
+
+                    if($(".box").hasClass("bulat")&& $(".box").hasClass("triangle")){
+                        $(".box").removeClass("bulat triangle");
+                    }
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

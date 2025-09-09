@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2d2d2d;
+            color: #eaeaea;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 1000px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+        .billing-address, .cart-summary {
+            width: 45%;
+        }
+        h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #444;
+            border: 1px solid #555;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .promo-section {
+            display: flex;
+            justify-content: space-between;
+        }
+        .promo-section input[type="text"] {
+            width: 70%;
+        }
+        .promo-section button {
+            width: 25%;
+            background-color: #555;
+            border: none;
+            padding: 10px;
+            color: #fff;
+            border-radius: 5px;
+        }
+        .cart-summary {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .cart-item {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .cart-item p {
+            margin: 0;
+        }
+        .total {
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .promo-applied {
+            color: #00ff00;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="billing-address">
+            <h2>Billing address</h2>
+            <input type="text" placeholder="First name" required>
+            <input type="text" placeholder="Last name" required>
+            <input type="text" placeholder="Username" required>
+            <input type="email" placeholder="Email (Optional)">
+            <input type="text" placeholder="Address" required>
+            <input type="text" placeholder="Address 2 (Optional)">
+            <select required>
+                <option value="">Choose Country...</option>
+                <option value="US">United States</option>
+                <!-- Add more options as needed -->
+            </select>
+            <div style="display: flex; justify-content: space-between;">
+                <input type="text" placeholder="State" style="width: 48%;" required>
+                <input type="text" placeholder="Zip" style="width: 48%;" required>
+            </div>
+        </div>
+        <div class="cart-summary">
+            <h2>Your cart</h2>
+            <div class="cart-item">
+                <p>Product name</p>
+                <p>$12</p>
+            </div>
+            <div class="cart-item">
+                <p>Second product</p>
+                <p>$8</p>
+            </div>
+            <div class="cart-item">
+                <p>Third item</p>
+                <p>$5</p>
+            </div>
+            <p class="promo-applied">Promo code EXAMPLECODE: -$5</p>
+            <p class="total">Total (USD): $20</p>
+            <div class="promo-section">
+                <input type="text" placeholder="Promo code">
+                <button>Redeem</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

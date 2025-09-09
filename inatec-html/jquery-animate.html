@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animate JS</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        .box{ 
+            width: 10px;
+            height: 10px;
+            background-color: rgb(98, 252, 226, 0.779);;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            function animation(){
+                $(".box").animate({
+                    height: 500
+                }, 1000, function() {
+                    $(".box").animate({
+                        width: 1000
+                    }, 1000, function() {
+                        $(".box").animate({
+                        height: 300
+                        }, 1000, function() {
+                            $(".box").animate({
+                            width: 300
+                             }, 1000, function() {
+                                animation();
+                            });
+                        });
+                    });
+                });
+            }
+                //.box untuk menciptakan kotak
+                //.bulat untuk menciptakan bulat
+
+            $(".action").click(function(){
+                animation();
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="action">Action</button>
+    <div class="box"></div>
+</body>
+</html>

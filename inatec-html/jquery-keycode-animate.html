@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        .box{
+            position: fixed; 
+            width: 50px;
+            height: 50px;
+            left: 100px;
+            top: 100px;
+            border: none;
+            outline: none;
+            resize: none;
+            caret-color: transparent;
+            background-color:#ccff00;
+            cursor: pointer;
+        }
+        .bulat{
+            border-radius: 50%;
+        }
+        .triangle{
+            width: 0;
+            height: 0;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent ;
+            border-bottom: 50px solid #8a2be2;
+            background-color: transparent;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function(){ //cursor gunanya buat ganti cursor pas masuk ke box
+            $(document).on("keydown", ".box", function(e){
+                const left = parseInt($(this).css("left").replace("px",""));
+                const top = parseInt($(this).css("top").replace("px",""));
+                const maxLeft = $(document).width();
+                const maxTop = $(document).height();
+                const width = $(this).width();
+                const height = $(this).height();
+
+                if(e.keyCode == 37 && e.shiftKey && left != 0){  //ini ngambil dari keycode html
+                    $(this).css("width", width - 50 + "px"); 
+                    return;
+                }
+                if(e.keyCode == 38 && e.shiftKey && top != 0){
+                    $(this).css("height", height - 50 + "px");
+                    return;
+                }
+                if(e.keyCode == 39 && e.shiftKey){
+                    $(this).css("width", width + 50 + "px"); 
+                    return;
+                }
+                if(e.keyCode == 40 && e.shiftKey){
+                    $(this).css("height", height + 50 + "px");
+                    return;
+                }
+
+                if(e.keyCode == 37 && left != 0){ 
+                    $(this).css("left", left - 100 + "px");
+                }
+                if(e.keyCode == 38 && top != 0){
+                    $(this).css("top", top - 100 + "px"); 
+                }
+                if(e.keyCode == 39 && left + 200 < maxLeft){
+                    $(this).css("left", left + 100 + "px");
+                }
+                if(e.keyCode == 40 && top + 200 < maxTop){
+                    $(this).css("top", top + 100 + "px");
+                }
+            });
+            $(window).keydown(function (e) {
+                if(e.keyCode == 32){
+                    $("body").append('<textarea class="box"></textarea>');
+                }
+            });
+        });
+    </script>
+    <title>Keycode Animate</title>
+</head>
+<body>
+    <textarea class="box"></textarea>
+</body>
+</html>

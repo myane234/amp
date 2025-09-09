@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#btnExample").click(function(){
+                const paragraf = $("textarea").val();
+                const totalparagraf = $("#divExample > div > p").length;
+                $("#divExample > div").append(`<p>${paragraf} ${totalparagraf}</p>`);
+                //$("#divExample > p:nth-child(odd)").toggle('slide');
+                //$("#divExample > p:nth-child(odd)").addClass("text-success").removeClass("text-danger");
+                //$("#divExample p:nth-child(even)").addClass("text-success").removeClass("text-danger");
+                //$("#divExample p:not(p:first-child, p:last-child").addClass("text-success").removeClass("text-danger");
+                //$("#divExample p:not(p:nth-child(odd))").addClass("text-success").removeClass("text-danger"); ganjil coyy
+                //$('#divExample p:not(p:nth-child(even)").addClass("text-success").removeClass("text-danger"); genap coyy
+                //
+            })
+            $("#btnExample2").click(function(){
+                $("#divExample > div > p").addClass("text-warning");
+            });
+
+            $(document).on("click", "#divExample > div > p", function(){
+                setTimeout(() => {
+                //setInterval(() => {     //pas pencet,satu detik hilang,nge delay satu fungsi,infinity loop
+                    $(this).addClass("d-none"); //sebelum ada interval,ini di bawahnya document
+                }, 1000);
+
+                setTimeout(() => { //1x,fungsinya sama dengan set interval
+                    $(this).removeClass("d-none");
+                }, 2000); //pas pencet,dua detik hilang
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="btn btn-primary" id="btnExample">Tambah</button> 
+    <button class="btn btn-primary" id="btnExample2">Change Color</button>
+    <div id="divExample">
+        <div>
+            <p>Paragraf lain</p>
+        </div>
+        <textarea class="d-none">Paragraf</textarea>
+    </div>
+</body>
+</html>
